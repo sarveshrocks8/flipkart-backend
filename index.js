@@ -41,9 +41,9 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 //#########################
-app.get('/', (req, res) => {
-    res.send('Flipkart Backend is running');
-});
+// app.get('/', (req, res) => {
+//     res.send('Flipkart Backend is running');
+// });
 //##########################
 app.use('/', Routes);
 
