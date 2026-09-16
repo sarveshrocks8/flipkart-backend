@@ -39,7 +39,7 @@ export const paymentResponse = (request, response) => {
     console.log("CALLBACK BODY:", request.body);
     const paytmCheckSum = request.body.CHECKSUMHASH;
     // console.log("CHECKSUM:", paytmCheckSum);
-    response.redirect('http://localhost:3000/');
+    response.redirect('https://flipkart-backend-mu.vercel.app/');
     delete request.body.CHECKSUMHASH;
 
     const isVerifySignature = paytmchecksum.verifySignature(request.body, 'bKMfNxPPf_QdZppa', paytmCheckSum);
