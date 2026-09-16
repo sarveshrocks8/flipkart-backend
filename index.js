@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 //app.listen(PORT, ()=>console.log(`Server is running on port http://localhost:${PORT}`))
 
-module.exports = app
+
 
 DefaultData();
 
@@ -40,6 +40,11 @@ DefaultData();
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+//#########################
+app.get('/', (req, res) => {
+    res.send('Flipkart Backend is running');
+});
+//##########################
 app.use('/', Routes);
 
 export let paytmMerchantkey = process.env.PAYTM_MERCHANT_KEY;
@@ -54,3 +59,5 @@ paytmParams['TXN_AMOUNT'] = '100',
 paytmParams['CALLBACK_URL'] = 'http://localhost:8000/callback'
 paytmParams['EMAIL'] = 'sc418760@gmail.com'
 paytmParams['MOBILE_NO'] = '1234567852'
+
+export default app;
