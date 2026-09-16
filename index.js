@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
     res.send('Flipkart Backend is running');
 });
 //##########################
-// app.use('/', Routes);
+app.use('/', Routes);
 
 export let paytmMerchantkey = process.env.PAYTM_MERCHANT_KEY;
 export let paytmParams = {};
