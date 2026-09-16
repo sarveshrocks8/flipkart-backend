@@ -10,14 +10,29 @@ import { v4 as uuid } from 'uuid';
 const app = express();
 dotenv.config();
 
-const PORT = 8000;
+//const PORT = 8000;
 
 const DB_USERNAME = process.env.DB_USERNAME;
 const DB_USER_PASSWORD = process.env.DB_USER_PASSWORD;
+//#################################
+let isConnected = false;
+async function connectToMongoDB () {
+    Connection(DB_USERNAME, DB_USER_PASSWORD);
+    isConnected = true;
+}
 
-Connection(DB_USERNAME, DB_USER_PASSWORD);
+//add middeleware
+app.use((req, res, next) => {
+    if(!isConnected){
+        connectToMongoDB();
+    }
+    next();
+})
+//##########################################
 
-app.listen(PORT, ()=>console.log(`Server is running on port http://localhost:${PORT}`))
+//app.listen(PORT, ()=>console.log(`Server is running on port http://localhost:${PORT}`))
+
+module.exports = app
 
 DefaultData();
 
